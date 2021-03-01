@@ -1,0 +1,44 @@
+version: '3.9'
+services: 
+  db:
+    image: postgres
+    container_name: db 
+    environment: 
+    - POSTGRES_DB=ski_school
+    - POSTGRES_USER=postgres
+    - POSTGRES_PASSWORD=031546665
+    volumes:
+    - ./postgres:/var/lib/postgresql/data  
+    ports: 
+    - 5432:5432
+    networks: 
+    - backend-network
+
+  dotnet:
+    build: 
+      context: .\dot-net
+      dockerfile: Dockerfile
+    container_name: dotnet-backend
+    ports:
+    - 5000:80
+    - 5001:80
+    depends_on: 
+    - db
+    networks: 
+    - frontend-network
+    - backend-network
+
+  client:
+    build:
+      context: .\client
+      dockerfile: Dockerfile
+    container_name: client
+    ports:
+    - 3000:3000
+    networks: 
+    - frontend-network
+
+networks: 
+  frontend-network: {}
+  backend-network: {}
+   

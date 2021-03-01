@@ -1,0 +1,18 @@
+
+.show_instructors {
+    width: 270px;
+    height: 150px;
+    float: left;
+    display: block;
+    border: 4px solid rgb(36, 40, 68);
+    border-radius: 6px;
+    background-color: rgb(96, 95, 141);
+    padding: 7px;
+    margin: 14px;;
+    color: white;
+    word-spacing: 2px;
+}
+
+.data {
+    font-weight: 600;
+}
